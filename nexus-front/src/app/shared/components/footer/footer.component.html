@@ -1,38 +1,71 @@
-<footer class="bg-gray-800 text-gray-400">
-  <div class="container mx-auto py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <div class="md:col-span-2 lg:col-span-1">
-        <img src="assets/logo-white.svg" alt="Nexus AI Logo" class="h-8 mb-4">
-        <p class="text-sm leading-relaxed">Advanced social media analytics powered by artificial intelligence. Unlock data-driven insights to elevate your social media game.</p>
-      </div>
-      <div>
-        <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
-        <ul class="space-y-2">
-          <li><a routerLink="/features" class="hover:text-indigo-300 transition duration-300">Features</a></li>
-          <li><a routerLink="/metrics" class="hover:text-indigo-300 transition duration-300">Metrics</a></li>
-          <li><a routerLink="/roi" class="hover:text-indigo-300 transition duration-300">ROI Analysis</a></li>
-          <li><a href="#" class="hover:text-indigo-300 transition duration-300">Blog</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-lg font-semibold text-white mb-4">Company</h4>
-        <ul class="space-y-2">
-          <li><a href="#" class="hover:text-indigo-300 transition duration-300">About Us</a></li>
-          <li><a href="#" class="hover:text-indigo-300 transition duration-300">Contact Us</a></li>
-          <li><a href="#" class="hover:text-indigo-300 transition duration-300">Privacy Policy</a></li>
-          <li><a href="#" class="hover:text-indigo-300 transition duration-300">Terms of Service</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-lg font-semibold text-white mb-4">Contact</h4>
-        <p class="text-sm">
-          Email: <a href="mailto:info@nexus-ai.com" class="hover:text-indigo-300 transition duration-300">info&#64;nexus-ai.com</a><br>
-        </p>
-      </div>
-    </div>
-    <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm">
-      <p>&copy; {{ currentYear }} Nexus AI. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
+<!-- Footer -->
+<footer class="bg-gradient-to-b from-gray-900 to-gray-950 text-gray-400 pt-20 pb-10">
+    <div class="container mx-auto px-4">
+        <!-- Main Footer Content -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-12">
+            <!-- Brand Section -->
+            <div class="lg:col-span-4">
+                <img src="assets/logo-white.svg" alt="Nexus AI Logo" class="h-10 mb-6">
+                <p class="text-gray-400 leading-relaxed mb-6">
+                    Advanced social media analytics powered by artificial intelligence. Unlock data-driven insights to elevate your social media game.
+                </p>
+                <!-- Social Media Icons -->
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-500 transition-colors duration-300">
+                        <i class="fab fa-twitter text-white"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-500 transition-colors duration-300">
+                        <i class="fab fa-linkedin-in text-white"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-500 transition-colors duration-300">
+                        <i class="fab fa-github text-white"></i>
+                    </a>
+                </div>
+            </div>
 
+            <!-- Quick Links -->
+            <div class="lg:col-span-2 lg:col-start-6">
+                <h4 class="text-lg font-semibold text-white mb-6">Quick Links</h4>
+                <ul class="space-y-3">
+                    <li><a routerLink="/features" class="hover:text-indigo-400 transition-colors duration-300">Features</a></li>
+                    <li><a routerLink="/metrics" class="hover:text-indigo-400 transition-colors duration-300">Metrics</a></li>
+                    <li><a routerLink="/roi" class="hover:text-indigo-400 transition-colors duration-300">ROI Analysis</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition-colors duration-300">Blog</a></li>
+                </ul>
+            </div>
+
+            <!-- Company -->
+            <div class="lg:col-span-2">
+                <h4 class="text-lg font-semibold text-white mb-6">Company</h4>
+                <ul class="space-y-3">
+                    <li><a href="#" class="hover:text-indigo-400 transition-colors duration-300">About Us</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition-colors duration-300">Contact Us</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition-colors duration-300">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition-colors duration-300">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="lg:col-span-3">
+                <h4 class="text-lg font-semibold text-white mb-6">Get in Touch</h4>
+                <div class="space-y-4">
+                    <a href="mailto:info&#64;nexus-ai.com" class="flex items-center space-x-3 hover:text-indigo-400 transition-colors duration-300">
+                        <i class="far fa-envelope text-indigo-400"></i>
+                        <span>info&#64;nexus-ai.com</span>
+                    </a>
+                    <p class="flex items-center space-x-3">
+                        <i class="far fa-clock text-indigo-400"></i>
+                        <span>Mon - Fri: 9:00 - 17:00</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-gray-800 pt-8 mt-12 text-center">
+            <p class="text-sm text-gray-500">
+                &copy; {{ currentYear }} Nexus AI. All rights reserved.
+            </p>
+        </div>
+    </div>
+</footer>
