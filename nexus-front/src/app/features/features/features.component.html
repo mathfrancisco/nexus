@@ -3,40 +3,34 @@
   <h2 class="text-3xl font-bold text-center mb-12">Platform Features</h2>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    @for (feature of features(); track feature.id) {
-      <div class="bg-white rounded-lg shadow-lg p-6">
-        <div class="text-indigo-600 text-3xl mb-4">
-          <i [class]="feature.icon"></i>
+    <div *ngFor="let feature of features(); trackBy: trackByFeatureId" class="bg-white rounded-lg shadow-lg p-6">
+      <div class="text-indigo-600 text-3xl mb-4">
+        <i [class]="feature.icon"></i> &#123;* Ícone *&#125;
+      </div>
+      <h3 class="text-xl font-semibold mb-4">{{ feature.title }}</h3>
+      <p class="text-gray-600 mb-4">{{ feature.description }}</p>
+
+      <div class="space-y-4">
+        <div>
+          <h4 class="font-medium mb-2">Capabilities</h4>
+          <ul class="space-y-2">
+            <li *ngFor="let capability of feature.capabilities; trackBy: trackByCapability" class="flex items-center">
+              <span class="text-green-500 mr-2">✓</span>
+              {{ capability }}
+            </li>
+          </ul>
         </div>
-        <h3 class="text-xl font-semibold mb-4">{{feature.title}}</h3>
-        <p class="text-gray-600 mb-4">{{feature.description}}</p>
 
-        <div class="space-y-4">
-          <div>
-            <h4 class="font-medium mb-2">Capabilities</h4>
-            <ul class="space-y-2">
-              @for (capability of feature.capabilities; track capability) {
-                <li class="flex items-center">
-                  <span class="text-green-500 mr-2">✓</span>
-                  {{capability}}
-                </li>
-              }
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="font-medium mb-2">Benefits</h4>
-            <ul class="space-y-2">
-              @for (benefit of feature.benefits; track benefit) {
-                <li class="flex items-center">
-                  <span class="text-blue-500 mr-2">→</span>
-                  {{benefit}}
-                </li>
-              }
-            </ul>
-          </div>
+        <div>
+          <h4 class="font-medium mb-2">Benefits</h4>
+          <ul class="space-y-2">
+            <li *ngFor="let benefit of feature.benefits; trackBy: trackByBenefit" class="flex items-center">
+              <span class="text-blue-500 mr-2">→</span>
+              {{ benefit }}
+            </li>
+          </ul>
         </div>
       </div>
-    }
+    </div>
   </div>
 </div>

@@ -1,38 +1,36 @@
 <!-- features/metrics/metrics.component.html -->
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-  <!-- Platform Selector -->
-  <div class="mb-8">
-    <div class="flex space-x-4">
-      @for (platform of ['YOUTUBE', 'INSTAGRAM', 'TIKTOK', 'LINKEDIN']; track platform) {
-        <button
-          (click)="changePlatform(platform)"
-          [class.bg-indigo-600]="selectedPlatform() === platform"
-          [class.text-white]="selectedPlatform() === platform"
-          class="px-4 py-2 rounded-lg transition duration-300">
-          {{platform}}
-        </button>
-      }
+<div *ngIf="metrics" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+  <!-- Followers -->
+  <div class="bg-white p-6 rounded-lg shadow">
+    <h3 class="text-gray-500 text-sm">Followers</h3>
+    <p class="text-2xl font-bold">{{ metrics().followers | metricFormatter:'number' }}</p>
+    <span class="text-green-500 text-sm">↑ {{ metrics().growth.daily | metricFormatter:'percentage' }} Today</span>
+  </div>
+
+  <!-- Engagement Rate -->
+  <div class="bg-white p-6 rounded-lg shadow">
+    <h3 class="text-gray-500 text-sm">Engagement Rate</h3>
+    <p class="text-2xl font-bold">{{ metrics().engagementRate | metricFormatter:'percentage' }}</p>
+  </div>
+
+  <!-- Interactions -->
+  <div class="bg-white p-6 rounded-lg shadow">
+    <h3 class="text-gray-500 text-sm">Interactions</h3>
+    <p class="text-2xl font-bold">{{ metrics().interactions | metricFormatter:'number' }}</p>
+  </div>
+
+  <!-- Demographics -->
+  <div class="bg-white p-6 rounded-lg shadow">
+    <h3 class="text-gray-500 text-sm">Demographics</h3>
+    <div *ngFor="let demographic of metrics()?.demographics; trackBy: trackByDemographicAgeRange" class="flex justify-between">
+      <span>{{ demographic.ageRange }}</span>
+      <span>{{ demographic.percentage | metricFormatter:'percentage' }}</span>
     </div>
   </div>
 
-  @if (loading()) {
-    <app-loading-spinner message="Loading metrics..."></app-loading-spinner>
-  } @else if (metrics()) {
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <!-- Followers -->
-      <div class="bg-white p-6 rounded-lg shadow">
-        <h3 class="text-gray-500 text-sm">Followers</h3>
-        <p class="text-2xl font-bold">{{metrics()?.followers | metricFormatter:'number'}}</p>
-        <span class="text-green-500 text-sm">↑ {{metrics()?.growth?.daily}}% Today</span>
-      </div>
-
-      <!-- Engagement Rate -->
-      <div class="bg-white p-6 rounded-lg shadow">
-        <h3 class="text-gray-500 text-sm">Engagement Rate</h3>
-        <p class="text-2xl font-bold">{{metrics()?.engagementRate | metricFormatter:'percentage'}}</p>
-      </div>
-
-      <!-- Charts and other metrics... -->
-    </div>
-  }
+  <!-- Daily Metrics Chart -->
+  <div class="bg-white p-6 rounded-lg shadow col-span-2 lg:col-span-4">
+    <h3 class="text-gray-500 text-sm">Daily Metrics</h3>
+    <canvas id="dailyMetricsChart"></canvas>
+  </div>
 </div>
