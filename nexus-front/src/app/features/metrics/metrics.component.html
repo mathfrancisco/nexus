@@ -1,5 +1,9 @@
-<!-- features/metrics/metrics.component.html -->
 <div class="min-h-screen bg-gray-50">
+    <!-- Loading Spinner -->
+    <div *ngIf="loading()" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+        <app-loading-spinner message="Loading metrics..."></app-loading-spinner>
+    </div>
+
     <!-- Header Section -->
     <div class="bg-gradient-to-r from-indigo-600 to-purple-600 py-12">
         <div class="container mx-auto px-4">
@@ -10,15 +14,14 @@
                 </div>
                 <!-- Platform Selector -->
                 <div class="mt-6 md:mt-0">
-                   <select [(ngModel)]="selectedPlatform()" 
-        (change)="changePlatform($event.target.value)"
-        class="bg-white/10 text-white border border-indigo-300/30 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400">
-    <option *ngFor="let platform of platforms; trackBy: trackByPlatformName" 
-            [value]="platform">
-        {{platform}}
-    </option>
-</select>
-
+                    <select [(ngModel)]="selectedPlatform()" 
+                            (change)="changePlatform($event.target.value)"
+                            class="bg-white/10 text-white border border-indigo-300/30 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400">
+                        <option *ngFor="let platform of platforms; trackBy: trackByPlatformName" 
+                                [value]="platform">
+                            {{platform}}
+                        </option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -106,19 +109,41 @@
                 <div class="flex items-center justify-between mb-6">
                     <h3 class="text-gray-600 font-semibold">Daily Metrics</h3>
                     <div class="flex space-x-2">
-                        <button class="px-4 py-2 text-sm bg-gray-100 rounded-lg text-gray-600 hover:bg-gray-200 transition-colors duration-300">
+                        <button (click)="changeTimeframe('day')"
+                                [class]="selectedTimeframe() === 'day' 
+                                    ? 'px-4 py-2 text-sm bg-indigo-600 text-white' 
+                                    : 'px-4 py-2 text-sm bg-gray-100 text-gray-600'"
+                                class="rounded-lg hover:bg-indigo-700 transition-colors duration-300">
+                            Day
+                        </button>
+                        <button (click)="changeTimeframe('week')"
+                                [class]="selectedTimeframe() === 'week' 
+                                    ? 'px-4 py-2 text-sm bg-indigo-600 text-white' 
+                                    : 'px-4 py-2 text-sm bg-gray-100 text-gray-600'"
+                                class="rounded-lg hover:bg-indigo-700 transition-colors duration-300">
                             Week
                         </button>
-                        <button class="px-4 py-2 text-sm bg-indigo-600 rounded-lg text-white hover:bg-indigo-700 transition-colors duration-300">
+                        <button (click)="changeTimeframe('month')"
+                                [class]="selectedTimeframe() === 'month' 
+                                    ? 'px-4 py-2 text-sm bg-indigo-600 text-white' 
+                                    : 'px-4 py-2 text-sm bg-gray-100 text-gray-600'"
+                                class="rounded-lg hover:bg-indigo-700 transition-colors duration-300">
                             Month
-                        </button>
-                        <button class="px-4 py-2 text-sm bg-gray-100 rounded-lg text-gray-600 hover:bg-gray-200 transition-colors duration-300">
-                            Year
                         </button>
                     </div>
                 </div>
                 <div class="h-80">
                     <canvas id="dailyMetricsChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Demographics Chart -->
+            <div class="bg-white rounded-xl shadow-lg p-6 col-span-1 md:col-span-2 lg:col-span-4 transform hover:-translate-y-1 transition-all duration-300">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-gray-600 font-semibold">Demographics Distribution</h3>
+                </div>
+                <div class="h-80">
+                    <canvas id="demographicsChart"></canvas>
                 </div>
             </div>
         </div>
