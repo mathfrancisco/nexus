@@ -2,10 +2,12 @@
 import { Component, OnInit, signal, inject } from '@angular/core';
 import { FeatureService } from '../../core/services/feature.service';
 import { Feature } from '../../core/models/feature.model';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-features',
   standalone: true,
+  imports: [CommonModule],
   templateUrl: './features.component.html'
 })
 export class FeaturesComponent implements OnInit {

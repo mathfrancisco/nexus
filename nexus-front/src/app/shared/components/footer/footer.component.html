@@ -1,28 +1,39 @@
-<footer class="bg-gray-900 text-gray-300">
-  <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div>
-        <h3 class="text-xl font-bold mb-4">NEXUS AI</h3>
-        <p class="text-sm">Advanced social media analytics powered by artificial intelligence.</p>
+<footer class="bg-gray-800 text-gray-400">
+  <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="md:col-span-2 lg:col-span-1">
+        <img src="assets/logo-white.svg" alt="Nexus AI Logo" class="h-8 mb-4">
+        <p class="text-sm leading-relaxed">Advanced social media analytics powered by artificial intelligence.  Unlock the power of data-driven insights to elevate your social media game.</p>
       </div>
       <div>
-        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+        <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
         <ul class="space-y-2">
-          <li><a href="/features" class="hover:text-white">Features</a></li>
-          <li><a href="/metrics" class="hover:text-white">Metrics</a></li>
-          <li><a href="/roi" class="hover:text-white">ROI Analysis</a></li>
+          <li><a routerLink="/features" class="hover:text-indigo-300 transition duration-300">Features</a></li>
+          <li><a routerLink="/metrics" class="hover:text-indigo-300 transition duration-300">Metrics</a></li>
+          <li><a routerLink="/roi" class="hover:text-indigo-300 transition duration-300">ROI Analysis</a></li>
+          <li><a href="#" class="hover:text-indigo-300 transition duration-300">Blog</a></li>
         </ul>
       </div>
       <div>
-        <h4 class="text-lg font-semibold mb-4">Contact</h4>
+        <h4 class="text-lg font-semibold text-white mb-4">Company</h4>
         <ul class="space-y-2">
-          <li>Email: info&#64;nexus-ai.com</li>
-          <li>Phone: (555) 123-4567</li>
+          <li><a href="#" class="hover:text-indigo-300 transition duration-300">About Us</a></li>
+          <li><a href="#" class="hover:text-indigo-300 transition duration-300">Contact Us</a></li>
+          <li><a href="#" class="hover:text-indigo-300 transition duration-300">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-indigo-300 transition duration-300">Terms of Service</a></li>
+
         </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold text-white mb-4">Contact</h4>
+        <p class="text-sm">
+          Email: <a href="mailto:info&#64;nexus-ai.com" class="hover:text-indigo-300 transition duration-300">info&#64;nexus-ai.com</a><br>
+        </p>
+
       </div>
     </div>
-    <div class="mt-8 pt-8 border-t border-gray-700 text-center">
-      <p>&copy; $&#123;new Date().getFullYear()&#125; NEXUS AI. All rights reserved.</p>
+    <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm">
+      <p>&copy; {{ currentYear }} Nexus AI. All rights reserved.</p>
     </div>
   </div>
 </footer>

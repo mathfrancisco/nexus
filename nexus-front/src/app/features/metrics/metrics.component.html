@@ -1,36 +1,47 @@
 <!-- features/metrics/metrics.component.html -->
-<div *ngIf="metrics" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div *ngIf="metrics() as m" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
+
   <!-- Followers -->
-  <div class="bg-white p-6 rounded-lg shadow">
-    <h3 class="text-gray-500 text-sm">Followers</h3>
-    <p class="text-2xl font-bold">{{ metrics().followers | metricFormatter:'number' }}</p>
-    <span class="text-green-500 text-sm">↑ {{ metrics().growth.daily | metricFormatter:'percentage' }} Today</span>
+  <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+    <h3 class="text-gray-600 text-lg font-semibold mb-2">Followers</h3>
+    <p class="text-3xl font-bold text-indigo-600">{{ m.followers | metricFormatter: 'number' }}</p>
+    <span class="text-green-500 text-sm" *ngIf="m.growth['daily'] > 0">
+    <i class="fas fa-arrow-up"></i> {{ m.growth['daily'] | metricFormatter: 'percentage' }} Today
+</span>
+    <span class="text-red-500 text-sm" *ngIf="m.growth['daily'] < 0">
+    <i class="fas fa-arrow-down"></i> {{ m.growth['daily'] | metricFormatter: 'percentage' }} Today
+</span>
+    <span class="text-gray-500 text-sm" *ngIf="m.growth['daily'] === 0">
+    <i class="fas fa-equals"></i> {{ m.growth['daily'] | metricFormatter: 'percentage' }} Today
+</span>
+
   </div>
 
   <!-- Engagement Rate -->
-  <div class="bg-white p-6 rounded-lg shadow">
-    <h3 class="text-gray-500 text-sm">Engagement Rate</h3>
-    <p class="text-2xl font-bold">{{ metrics().engagementRate | metricFormatter:'percentage' }}</p>
+  <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+    <h3 class="text-gray-600 text-lg font-semibold mb-2">Engagement Rate</h3>
+    <p class="text-3xl font-bold text-indigo-600">{{ m.engagementRate | metricFormatter: 'percentage' }}</p>
   </div>
 
   <!-- Interactions -->
-  <div class="bg-white p-6 rounded-lg shadow">
-    <h3 class="text-gray-500 text-sm">Interactions</h3>
-    <p class="text-2xl font-bold">{{ metrics().interactions | metricFormatter:'number' }}</p>
+  <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+    <h3 class="text-gray-600 text-lg font-semibold mb-2">Interactions</h3>
+    <p class="text-3xl font-bold text-indigo-600">{{ m.interactions | metricFormatter: 'number' }}</p>
   </div>
 
+
   <!-- Demographics -->
-  <div class="bg-white p-6 rounded-lg shadow">
-    <h3 class="text-gray-500 text-sm">Demographics</h3>
-    <div *ngFor="let demographic of metrics()?.demographics; trackBy: trackByDemographicAgeRange" class="flex justify-between">
+  <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+    <h3 class="text-gray-600 text-lg font-semibold mb-2">Demographics</h3>
+    <div *ngFor="let demographic of m.demographics; trackBy: trackByDemographicAgeRange" class="flex justify-between py-2 border-b border-gray-200">
       <span>{{ demographic.ageRange }}</span>
-      <span>{{ demographic.percentage | metricFormatter:'percentage' }}</span>
+      <span>{{ demographic.percentage | metricFormatter: 'percentage' }}</span>
     </div>
   </div>
 
   <!-- Daily Metrics Chart -->
-  <div class="bg-white p-6 rounded-lg shadow col-span-2 lg:col-span-4">
-    <h3 class="text-gray-500 text-sm">Daily Metrics</h3>
+  <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 col-span-2 lg:col-span-4">
+    <h3 class="text-gray-600 text-lg font-semibold mb-4">Daily Metrics</h3>
     <canvas id="dailyMetricsChart"></canvas>
   </div>
 </div>

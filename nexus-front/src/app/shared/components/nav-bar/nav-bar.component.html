@@ -1,35 +1,39 @@
 <nav class="bg-gray-900 fixed w-full z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
-      <div class="flex-shrink-0">
-        <a href="/" class="text-white text-2xl font-bold">NEXUS AI</a>
+      <div class="flex items-center">
+        <a routerLink="/" class="flex items-center">
+          <img src="assets/logo.svg" alt="Nexus AI Logo" class="h-8 mr-2">  </a>
+        <span class="text-white text-xl font-semibold">Nexus AI</span>
       </div>
-      <div class="hidden md:block">
-        <div class="ml-10 flex items-baseline space-x-4">
-          <a routerLink="/"
-             routerLinkActive="bg-gray-700"
-             [routerLinkActiveOptions]="{exact: true}"
-             class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-            Home
-          </a>
-          <a routerLink="/features"
-             routerLinkActive="bg-gray-700"
-             class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-            Features
-          </a>
-          <a routerLink="/metrics"
-             routerLinkActive="bg-gray-700"
-             class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-            Metrics
-          </a>
-          <a routerLink="/roi"
-             routerLinkActive="bg-gray-700"
-             class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-            ROI
-          </a>
-        </div>
+      <div class="hidden md:flex items-center space-x-6">
+        <a routerLink="/"
+           routerLinkActive="border-b-2 border-indigo-500 text-indigo-500"
+           [routerLinkActiveOptions]="{ exact: true }"
+           class="text-gray-300 hover:text-indigo-500 px-3 py-2 text-base font-medium transition duration-300">
+          Home
+        </a>
+        <a routerLink="/features"
+           routerLinkActive="border-b-2 border-indigo-500 text-indigo-500"
+           class="text-gray-300 hover:text-indigo-500 px-3 py-2 text-base font-medium transition duration-300">
+          Features
+        </a>
+        <a routerLink="/metrics"
+           routerLinkActive="border-b-2 border-indigo-500 text-indigo-500"
+           class="text-gray-300 hover:text-indigo-500 px-3 py-2 text-base font-medium transition duration-300">
+          Metrics
+        </a>
+        <a routerLink="/roi"
+           routerLinkActive="border-b-2 border-indigo-500 text-indigo-500"
+           class="text-gray-300 hover:text-indigo-500 px-3 py-2 text-base font-medium transition duration-300">
+          ROI
+        </a>
+        <button class="bg-indigo-500 hover:bg-indigo-700 text-white px-4 py-2 rounded-md font-semibold transition duration-300">
+          Sign Up
+        </button>
       </div>
+
+
     </div>
   </div>
 </nav>
-`
