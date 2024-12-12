@@ -1,47 +1,125 @@
 <!-- features/metrics/metrics.component.html -->
-<div *ngIf="metrics() as m" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
-
-  <!-- Followers -->
-  <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-    <h3 class="text-gray-600 text-lg font-semibold mb-2">Followers</h3>
-    <p class="text-3xl font-bold text-indigo-600">{{ m.followers | metricFormatter: 'number' }}</p>
-    <span class="text-green-500 text-sm" *ngIf="m.growth['daily'] > 0">
-    <i class="fas fa-arrow-up"></i> {{ m.growth['daily'] | metricFormatter: 'percentage' }} Today
-</span>
-    <span class="text-red-500 text-sm" *ngIf="m.growth['daily'] < 0">
-    <i class="fas fa-arrow-down"></i> {{ m.growth['daily'] | metricFormatter: 'percentage' }} Today
-</span>
-    <span class="text-gray-500 text-sm" *ngIf="m.growth['daily'] === 0">
-    <i class="fas fa-equals"></i> {{ m.growth['daily'] | metricFormatter: 'percentage' }} Today
-</span>
-
-  </div>
-
-  <!-- Engagement Rate -->
-  <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-    <h3 class="text-gray-600 text-lg font-semibold mb-2">Engagement Rate</h3>
-    <p class="text-3xl font-bold text-indigo-600">{{ m.engagementRate | metricFormatter: 'percentage' }}</p>
-  </div>
-
-  <!-- Interactions -->
-  <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-    <h3 class="text-gray-600 text-lg font-semibold mb-2">Interactions</h3>
-    <p class="text-3xl font-bold text-indigo-600">{{ m.interactions | metricFormatter: 'number' }}</p>
-  </div>
-
-
-  <!-- Demographics -->
-  <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-    <h3 class="text-gray-600 text-lg font-semibold mb-2">Demographics</h3>
-    <div *ngFor="let demographic of m.demographics; trackBy: trackByDemographicAgeRange" class="flex justify-between py-2 border-b border-gray-200">
-      <span>{{ demographic.ageRange }}</span>
-      <span>{{ demographic.percentage | metricFormatter: 'percentage' }}</span>
+<div class="min-h-screen bg-gray-50">
+    <!-- Header Section -->
+    <div class="bg-gradient-to-r from-indigo-600 to-purple-600 py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">Platform Metrics</h1>
+                    <p class="text-indigo-100">Real-time analytics and insights for your social media presence</p>
+                </div>
+                <!-- Platform Selector -->
+                <div class="mt-6 md:mt-0">
+                    <select [(ngModel)]="selectedPlatform()" 
+                            (change)="changePlatform($event.target.value)"
+                            class="bg-white/10 text-white border border-indigo-300/30 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400">
+                        <option value="YOUTUBE">YouTube</option>
+                        <option value="INSTAGRAM">Instagram</option>
+                        <option value="TIKTOK">TikTok</option>
+                        <option value="LINKEDIN">LinkedIn</option>
+                    </select>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- Daily Metrics Chart -->
-  <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 col-span-2 lg:col-span-4">
-    <h3 class="text-gray-600 text-lg font-semibold mb-4">Daily Metrics</h3>
-    <canvas id="dailyMetricsChart"></canvas>
-  </div>
+    <!-- Metrics Dashboard -->
+    <div class="container mx-auto px-4 -mt-8">
+        <div *ngIf="metrics() as m" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Followers Card -->
+            <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-gray-600 font-semibold">Followers</h3>
+                    <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center">
+                        <i class="fas fa-users text-indigo-600"></i>
+                    </div>
+                </div>
+                <p class="text-3xl font-bold text-gray-800 mb-2">
+                    {{ m.followers|metricFormatter: 'number' }}
+                </p>
+                <div class="flex items-center">
+                    <span [ngClass]="{
+                        'text-green-500': m.growth['daily'] > 0,
+                        'text-red-500': m.growth['daily'] < 0,
+                        'text-gray-500': m.growth['daily'] === 0
+                    }" class="flex items-center text-sm">
+                        <i [class]="'fas fa-' + (m.growth['daily'] > 0 ? 'arrow-up' : m.growth['daily'] < 0 ? 'arrow-down' : 'equals') + ' mr-1'"></i>
+                        {{ m.growth['daily']|metricFormatter: 'percentage' }} Today
+                    </span>
+                </div>
+            </div>
+
+            <!-- Engagement Rate Card -->
+            <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-gray-600 font-semibold">Engagement Rate</h3>
+                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                        <i class="fas fa-chart-line text-green-600"></i>
+                    </div>
+                </div>
+                <p class="text-3xl font-bold text-gray-800">
+                    {{ m.engagementRate|metricFormatter: 'percentage' }}
+                </p>
+            </div>
+
+            <!-- Interactions Card -->
+            <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-gray-600 font-semibold">Interactions</h3>
+                    <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center">
+                        <i class="fas fa-comments text-purple-600"></i>
+                    </div>
+                </div>
+                <p class="text-3xl font-bold text-gray-800">
+                    {{ m.interactions|metricFormatter: 'number' }}
+                </p>
+            </div>
+
+            <!-- Demographics Card -->
+            <div class="bg-white rounded-xl shadow-lg p-6 transform hover:-translate-y-1 transition-all duration-300">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-gray-600 font-semibold">Demographics</h3>
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-users-viewfinder text-blue-600"></i>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <div *ngFor="let demographic of m.demographics; trackBy: trackByDemographicAgeRange" 
+                         class="flex items-center justify-between">
+                        <span class="text-gray-600">{{ demographic.ageRange }}</span>
+                        <div class="flex items-center">
+                            <div class="w-24 bg-gray-200 rounded-full h-2 mr-2">
+                                <div class="bg-indigo-600 h-2 rounded-full" 
+                                     [style.width]="demographic.percentage + '%'"></div>
+                            </div>
+                            <span class="text-gray-700 font-medium">
+                                {{ demographic.percentage|metricFormatter: 'percentage' }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daily Metrics Chart -->
+            <div class="bg-white rounded-xl shadow-lg p-6 col-span-1 md:col-span-2 lg:col-span-4 transform hover:-translate-y-1 transition-all duration-300">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-gray-600 font-semibold">Daily Metrics</h3>
+                    <div class="flex space-x-2">
+                        <button class="px-4 py-2 text-sm bg-gray-100 rounded-lg text-gray-600 hover:bg-gray-200 transition-colors duration-300">
+                            Week
+                        </button>
+                        <button class="px-4 py-2 text-sm bg-indigo-600 rounded-lg text-white hover:bg-indigo-700 transition-colors duration-300">
+                            Month
+                        </button>
+                        <button class="px-4 py-2 text-sm bg-gray-100 rounded-lg text-gray-600 hover:bg-gray-200 transition-colors duration-300">
+                            Year
+                        </button>
+                    </div>
+                </div>
+                <div class="h-80">
+                    <canvas id="dailyMetricsChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
