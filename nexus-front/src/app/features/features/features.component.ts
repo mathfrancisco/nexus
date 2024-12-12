@@ -16,6 +16,14 @@ export class FeaturesComponent implements OnInit { // Implemente OnInit
     ngOnInit() { // Adicione ngOnInit
         this.loadFeatures();
     }
+   async loadFeatures() {
+        try {
+            const data = await this.featureService.getFeatures().toPromise();
+            this.features.set(data);
+        } catch (error) {
+            console.error("Erro ao carregar features:", error);
+            // Lidar com o erro, ex: exibir uma mensagem para o usuário
+        }
 
   features = signal<Feature[]>([
     {
