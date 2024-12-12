@@ -1,0 +1,38 @@
+<!-- features/metrics/metrics.component.html -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <!-- Platform Selector -->
+  <div class="mb-8">
+    <div class="flex space-x-4">
+      @for (platform of ['YOUTUBE', 'INSTAGRAM', 'TIKTOK', 'LINKEDIN']; track platform) {
+        <button
+          (click)="changePlatform(platform)"
+          [class.bg-indigo-600]="selectedPlatform() === platform"
+          [class.text-white]="selectedPlatform() === platform"
+          class="px-4 py-2 rounded-lg transition duration-300">
+          {{platform}}
+        </button>
+      }
+    </div>
+  </div>
+
+  @if (loading()) {
+    <app-loading-spinner message="Loading metrics..."></app-loading-spinner>
+  } @else if (metrics()) {
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Followers -->
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h3 class="text-gray-500 text-sm">Followers</h3>
+        <p class="text-2xl font-bold">{{metrics()?.followers | metricFormatter:'number'}}</p>
+        <span class="text-green-500 text-sm">↑ {{metrics()?.growth?.daily}}% Today</span>
+      </div>
+
+      <!-- Engagement Rate -->
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h3 class="text-gray-500 text-sm">Engagement Rate</h3>
+        <p class="text-2xl font-bold">{{metrics()?.engagementRate | metricFormatter:'percentage'}}</p>
+      </div>
+
+      <!-- Charts and other metrics... -->
+    </div>
+  }
+</div>

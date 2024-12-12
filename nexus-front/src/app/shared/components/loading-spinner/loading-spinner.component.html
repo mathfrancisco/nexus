@@ -1,0 +1,6 @@
+<div class="flex justify-center items-center" [class.h-full]="fullHeight">
+  <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500"
+       [class]="size === 'large' ? 'h-12 w-12' : 'h-8 w-8'">
+  </div>
+  <span *ngIf="message" class="ml-2 text-gray-600">{{message}}</span>
+</div>
