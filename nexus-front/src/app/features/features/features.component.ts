@@ -1,5 +1,5 @@
 // features/features/features.component.ts
-import { Component, signal, inject } from '@angular/core';
+import { Component, OnInit, signal, inject } from '@angular/core'; 
 import { FeatureService } from '../../core/services/feature.service';
 import { Feature } from '../../core/models/feature.model';
 
@@ -8,8 +8,14 @@ import { Feature } from '../../core/models/feature.model';
   standalone: true,
   templateUrl: './features.component.html'
 })
-export class FeaturesComponent {
-  private featureService = inject(FeatureService);
+export class FeaturesComponent implements OnInit { // Implemente OnInit
+    private featureService = inject(FeatureService);
+
+    features = signal<Feature[]>([]); // Inicialize como um array vazio
+
+    ngOnInit() { // Adicione ngOnInit
+        this.loadFeatures();
+    }
 
   features = signal<Feature[]>([
     {
