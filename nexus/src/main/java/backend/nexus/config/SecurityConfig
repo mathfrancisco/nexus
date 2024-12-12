@@ -1,3 +1,6 @@
+package backend.nexus.config
+
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
