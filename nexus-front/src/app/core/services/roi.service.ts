@@ -12,9 +12,9 @@ export class RoiService {
 
   constructor(private http: HttpClient) {}
 
-  getRoiAnalysis(): Observable<RoiData> {
-    return this.http.get<RoiData>(`${this.apiUrl}/analysis`); // Ajuste o endpoint
-  }
+ getRoiAnalysis(): Observable<RoiData> {
+  return this.http.get<RoiData>(`${this.apiUrl}/analysis`);
+}
 
   getPlatformRoi(platform: string): Observable<RoiData> {
     return this.http.get<RoiData>(`${this.apiUrl}/${platform}`);
