@@ -1,0 +1,13 @@
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers("/api/v1/**").permitAll() // Permite acesso a todos os endpoints da API
+                // ... outras configurações de segurança
+                .and().csrf().disable(); // Desativa CSRF para simplificar (ajuste conforme necessário)
+        return http.build();
+    }
+}
