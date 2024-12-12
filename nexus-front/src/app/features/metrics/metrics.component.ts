@@ -49,18 +49,21 @@ export class MetricsComponent implements OnInit {
     this.loadMetrics();
   }
 
-  async loadMetrics() {
+
+async loadMetrics() {
     this.loading.set(true);
     try {
-      const data = await this.analyticsService.getPlatformMetrics(this.selectedPlatform())
-        .pipe(take(1))
-        .toPromise();
-      this.metrics.set(data || { platform: '', followers: 0, engagementRate: 0, interactions: 0, dailyMetrics: [], demographics: [], growth: { daily: 0, weekly: 0, monthly: 0 } });
+        const data = await this.analyticsService.getPlatformMetrics(this.selectedPlatform()).pipe(take(1)).toPromise();
+        this.metrics.set(data ?? this.metrics()); // Use o valor atual se data for null/undefined
+    } catch (error) {
+        console.error("Erro ao carregar métricas:", error);
+        // Lide com o erro, ex: exiba uma mensagem de erro ao usuário
     } finally {
-      this.loading.set(false);
+        this.loading.set(false);
     }
-    this.createChart(); // Recria o gráfico após carregar as métricas
-  }
+    this.createChart();
+}
+
 
   changePlatform(platform: string) {
     this.selectedPlatform.set(platform);
