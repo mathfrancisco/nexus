@@ -1,5 +1,5 @@
 // features/metrics/metrics.component.ts
-import { Component, signal, inject, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import {Component, signal, inject, OnInit, AfterViewInit, OnDestroy, DestroyRef} from '@angular/core';
 import { AnalyticsService } from '../../core/services/analytics.service';
 import { Demographics, PlatformMetrics } from '../../core/models/platform-metrics.model';
 import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
 export class MetricsComponent implements OnInit, AfterViewInit, OnDestroy {
   private analyticsService = inject(AnalyticsService);
   private destroyed$ = new Subject<void>();
+  constructor(private destroyRef: DestroyRef) { }
 
   // Signals
   selectedPlatform = signal('YOUTUBE');
@@ -69,13 +70,12 @@ export class MetricsComponent implements OnInit, AfterViewInit, OnDestroy {
     this.loading.set(true);
     try {
       const data = await this.analyticsService.getPlatformMetrics(this.selectedPlatform())
-        .pipe(takeUntilDestroyed())
+        .pipe(takeUntilDestroyed(this.destroyRef))
         .toPromise();
       this.metrics.set(data ?? this.metrics());
       this.updateCharts();
     } catch (error) {
       console.error("Erro ao carregar métricas:", error);
-      // TODO: Implementar tratamento de erro adequado
     } finally {
       this.loading.set(false);
     }
