@@ -1,0 +1,141 @@
+/* nav-bar.component.css */
+:host ::ng-deep .language-dropdown {
+  background: transparent !important;
+  border: none !important;
+  min-width: 140px !important;
+}
+
+/* Estilo do container do dropdown */
+:host ::ng-deep .language-dropdown .p-dropdown {
+  background: rgba(17, 24, 39, 0.8) !important;
+  border: 1px solid rgba(107, 114, 128, 0.2) !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+/* Estilo do item selecionado */
+:host ::ng-deep .language-dropdown .p-dropdown-label {
+  color: #e5e7eb !important;
+  font-weight: 500 !important;
+  padding: 0.5rem 1rem !important;
+}
+
+/* Estilo do ícone de seta */
+:host ::ng-deep .language-dropdown .p-dropdown-trigger {
+  background: transparent !important;
+  color: #9ca3af !important;
+  padding: 0 0.75rem !important;
+  border-left: 1px solid rgba(107, 114, 128, 0.2) !important;
+}
+
+/* Hover no dropdown */
+:host ::ng-deep .language-dropdown:not(.p-disabled):hover {
+  border-color: rgba(99, 102, 241, 0.5) !important;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1) !important;
+}
+
+/* Estilo do painel de opções */
+:host ::ng-deep .p-dropdown-panel {
+  background: rgba(17, 24, 39, 0.95) !important;
+  border: 1px solid rgba(107, 114, 128, 0.2) !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(8px) !important;
+  margin-top: 8px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Estilo dos items da lista */
+:host ::ng-deep .p-dropdown-items {
+  padding: 0.5rem !important;
+}
+
+:host ::ng-deep .p-dropdown-item {
+  color: #e5e7eb !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 8px !important;
+  margin: 2px 0 !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Hover nos items */
+:host ::ng-deep .p-dropdown-item:hover {
+  background: rgba(99, 102, 241, 0.1) !important;
+  color: #ffffff !important;
+}
+
+/* Item selecionado */
+:host ::ng-deep .p-dropdown-item.p-highlight {
+  background: rgba(99, 102, 241, 0.2) !important;
+  color: #ffffff !important;
+}
+
+/* Animação suave */
+:host ::ng-deep .p-dropdown-panel {
+  transform-origin: top;
+  animation: dropdownAnimation 0.2s ease-out;
+}
+
+@keyframes dropdownAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Estilo dos ícones dentro do dropdown */
+:host ::ng-deep .language-dropdown fa-icon {
+  font-size: 1.1rem;
+  color: #9ca3af;
+  transition: color 0.2s ease;
+}
+
+:host ::ng-deep .p-dropdown-item:hover fa-icon {
+  color: #6366f1;
+}
+
+/* Adicione estes estilos ao seu nav-bar.component.css */
+
+/* Estilo para o ícone da bandeira */
+:host ::ng-deep .language-dropdown fa-icon {
+  font-size: 1.2rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilo para o item selecionado */
+:host ::ng-deep .language-dropdown .p-dropdown-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Destaque para o idioma padrão */
+:host ::ng-deep .p-dropdown-item .text-indigo-400 {
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* Ajuste do container do dropdown */
+:host ::ng-deep .language-dropdown .p-dropdown {
+  padding: 0.25rem;
+  min-width: 180px;
+}
+
+/* Ajuste do painel de opções */
+:host ::ng-deep .p-dropdown-panel {
+  min-width: 180px;
+}
+
+/* Estilo para o hover nos itens */
+:host ::ng-deep .p-dropdown-item:hover fa-icon {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
