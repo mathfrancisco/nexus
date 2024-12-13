@@ -2,3 +2,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+nav {
+  z-index: 50; /* ou um valor maior */
+}
+:host ::ng-deep .p-dropdown-panel {
+  z-index: 100; /* ou um valor maior que o z-index da navbar */
+}

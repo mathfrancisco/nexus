@@ -41,40 +41,39 @@
       <!-- Right Side Menu (Auth + Language) -->
       <div class="hidden md:flex items-center space-x-6">
         <!-- Language Dropdown -->
-        <div class="flex items-center">
-          <p-dropdown [options]="languages"
-                      [(ngModel)]="selectedLanguage"
-                      optionLabel="code"
-                      [style]="{'min-width':'140px'}"
-                      styleClass="language-dropdown"
-                      [dropdownIcon]="'pi pi-chevron-down'"
-                      appendTo="body"
-                      (onChange)="changeLanguage()">
-            <ng-template pTemplate="selectedItem">
-              <div *ngIf="selectedLanguage" class="flex items-center gap-3 py-1">
-                <fa-icon [icon]="getLanguageIcon(selectedLanguage)"
-                         class="text-gray-300 text-lg"></fa-icon>
-                <span class="text-gray-200 font-medium">
-                    {{selectedLanguage === 'en' ? 'English' : 'Português'}}
-                </span>
-              </div>
-            </ng-template>
-            <ng-template let-lang pTemplate="item">
-              <div class="flex items-center gap-3 w-full">
-                <fa-icon [icon]="lang.flag"
-                         class="text-lg"></fa-icon>
-                <div class="flex flex-col">
-                  <span class="font-medium">{{lang.name}}</span>
-                  <span class="text-xs text-gray-400">{{lang.nativeName}}</span>
-                  <span *ngIf="lang.isDefault"
-                        class="text-xs text-indigo-400">Default</span>
-                </div>
-              </div>
-            </ng-template>
-          </p-dropdown>
-        </div>
+        <!-- <div class="flex items-center">
+           <p-dropdown [options]="languages"
+                       [(ngModel)]="selectedLanguage"
+                       optionLabel="code"
+                       [style]="{'min-width':'140px'}"
+                       styleClass="language-dropdown"
+                       [dropdownIcon]="'pi pi-chevron-down'"
+                       (onChange)="changeLanguage()">
+             <ng-template pTemplate="selectedItem">
+               <div *ngIf="selectedLanguage" class="flex items-center gap-3 py-1">
+                 <fa-icon [icon]="getLanguageIcon(selectedLanguage)"
+                          class="text-gray-300 text-lg"></fa-icon>
+                 <span class="text-gray-200 font-medium">
+                     {{selectedLanguage === 'en' ? 'English' : 'Português'}}
+                 </span>
+               </div>
+             </ng-template>
+             <ng-template let-lang pTemplate="item">
+               <div class="flex items-center gap-3 w-full">
+                 <fa-icon [icon]="lang.flag"
+                          class="text-lg"></fa-icon>
+                 <div class="flex flex-col">
+                   <span class="font-medium">{{lang.name}}</span>
+                   <span class="text-xs text-gray-400">{{lang.nativeName}}</span>
+                   <span *ngIf="lang.isDefault"
+                         class="text-xs text-indigo-400">Default</span>
+                 </div>
+               </div>
+             </ng-template>
+           </p-dropdown>
+         </div>-->
 
-        <!-- Auth Buttons -->
+         <!-- Auth Buttons -->
         <div class="flex items-center space-x-4">
           <button class="text-gray-300 hover:text-white font-medium transition-colors duration-300">
             Login
