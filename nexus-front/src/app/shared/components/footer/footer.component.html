@@ -20,7 +20,7 @@
         <!-- Social Links -->
         <div class="flex space-x-4">
           <a *ngFor="let social of socialLinks"
-             [href]="social.url"
+             [href]="social.url" target="_blank" rel="noopener noreferrer"
              class="group relative">
             <div class="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-300"></div>
             <div class="relative w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center group-hover:bg-gray-700 transition-colors duration-300">
@@ -42,6 +42,13 @@
                               <span class="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                             </span>
             </a>
+            <a *ngIf="link.url" [href]="link.url" target="_blank" rel="noopener noreferrer"
+               class="relative group text-gray-400 hover:text-white transition-colors duration-300">
+                            <span class="relative inline-block">
+                                {{ link.label }}
+                              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                            </span>
+            </a>
           </li>
         </ul>
       </div>
@@ -50,7 +57,7 @@
         <h4 class="text-lg font-semibold text-white mb-6">Company</h4>
         <ul class="space-y-3">
           <li *ngFor="let link of companyLinks">
-            <a [href]="link.url"
+            <a [href]="link.url" target="_blank" rel="noopener noreferrer"
                class="relative group text-gray-400 hover:text-white transition-colors duration-300">
                             <span class="relative inline-block">
                                 {{ link.label }}

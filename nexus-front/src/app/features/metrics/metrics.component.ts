@@ -235,10 +235,11 @@ export class MetricsComponent implements OnInit, AfterViewInit, OnDestroy {
     this.loadMetrics();
   }
 
-  changeTimeframe(timeframe: 'day' | 'week' | 'month') {
-    this.selectedTimeframe.set(timeframe);
+  changeTimeframe(timeframe: string) {
+    this.selectedTimeframe.set(timeframe as 'day'|'week'|'month');
     this.updateMetricsChart();
   }
+
 
   // Track By Functions
   trackByPlatformName(index: number, platform: string): string {

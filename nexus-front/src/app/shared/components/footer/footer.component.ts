@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import {RouterLink} from '@angular/router';
+
+import { RouterLink} from '@angular/router';
+import {NgForOf, NgIf} from '@angular/common';
 
 interface NavItem {
   label: string;
@@ -19,7 +21,9 @@ interface FooterLink {
   selector: 'app-footer',
   standalone: true,
   imports: [
-    RouterLink
+    RouterLink,
+    NgForOf,
+    NgIf
   ],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css'
