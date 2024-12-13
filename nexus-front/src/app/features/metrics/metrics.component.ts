@@ -138,8 +138,8 @@ export class MetricsComponent implements OnInit, AfterViewInit, OnDestroy {
     if (!this.metricsChart) return;
 
     const filteredMetrics = this.filterMetricsByTimeframe(this.metrics().dailyMetrics);
-    
-    this.metricsChart.data.labels = filteredMetrics.map(metric => 
+
+    this.metricsChart.data.labels = filteredMetrics.map(metric =>
       new Date(metric.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
     );
     this.metricsChart.data.datasets[0].data = filteredMetrics.map(metric => metric.value);
@@ -229,8 +229,9 @@ export class MetricsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   // Event Handlers
-  changePlatform(platform: string) {
-    this.selectedPlatform.set(platform);
+  changePlatform(event: Event) {
+    const newPlatform = (event.target as HTMLSelectElement).value;
+    this.selectedPlatform.set(newPlatform); // Atualiza o sinal com o novo valor
     this.loadMetrics();
   }
 

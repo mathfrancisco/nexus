@@ -14,10 +14,10 @@
                 </div>
                 <!-- Platform Selector -->
                 <div class="mt-6 md:mt-0">
-                    <select [(ngModel)]="selectedPlatform()" 
-                            (change)="changePlatform($event.target.value)"
+                    <select
+                            (change)="changePlatform($event)"
                             class="bg-white/10 text-white border border-indigo-300/30 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400">
-                        <option *ngFor="let platform of platforms; trackBy: trackByPlatformName" 
+                        <option *ngFor="let platform of platforms; trackBy: trackByPlatformName"
                                 [value]="platform">
                             {{platform}}
                         </option>
@@ -88,12 +88,12 @@
                     </div>
                 </div>
                 <div class="space-y-3">
-                    <div *ngFor="let demographic of m.demographics; trackBy: trackByDemographicAgeRange" 
+                    <div *ngFor="let demographic of m.demographics; trackBy: trackByDemographicAgeRange"
                          class="flex items-center justify-between">
                         <span class="text-gray-600">{{ demographic.ageRange }}</span>
                         <div class="flex items-center">
                             <div class="w-24 bg-gray-200 rounded-full h-2 mr-2">
-                                <div class="bg-indigo-600 h-2 rounded-full" 
+                                <div class="bg-indigo-600 h-2 rounded-full"
                                      [style.width]="demographic.percentage + '%'"></div>
                             </div>
                             <span class="text-gray-700 font-medium">
@@ -110,22 +110,22 @@
                     <h3 class="text-gray-600 font-semibold">Daily Metrics</h3>
                     <div class="flex space-x-2">
                         <button (click)="changeTimeframe('day')"
-                                [class]="selectedTimeframe() === 'day' 
-                                    ? 'px-4 py-2 text-sm bg-indigo-600 text-white' 
+                                [class]="selectedTimeframe() === 'day'
+                                    ? 'px-4 py-2 text-sm bg-indigo-600 text-white'
                                     : 'px-4 py-2 text-sm bg-gray-100 text-gray-600'"
                                 class="rounded-lg hover:bg-indigo-700 transition-colors duration-300">
                             Day
                         </button>
                         <button (click)="changeTimeframe('week')"
-                                [class]="selectedTimeframe() === 'week' 
-                                    ? 'px-4 py-2 text-sm bg-indigo-600 text-white' 
+                                [class]="selectedTimeframe() === 'week'
+                                    ? 'px-4 py-2 text-sm bg-indigo-600 text-white'
                                     : 'px-4 py-2 text-sm bg-gray-100 text-gray-600'"
                                 class="rounded-lg hover:bg-indigo-700 transition-colors duration-300">
                             Week
                         </button>
                         <button (click)="changeTimeframe('month')"
-                                [class]="selectedTimeframe() === 'month' 
-                                    ? 'px-4 py-2 text-sm bg-indigo-600 text-white' 
+                                [class]="selectedTimeframe() === 'month'
+                                    ? 'px-4 py-2 text-sm bg-indigo-600 text-white'
                                     : 'px-4 py-2 text-sm bg-gray-100 text-gray-600'"
                                 class="rounded-lg hover:bg-indigo-700 transition-colors duration-300">
                             Month
