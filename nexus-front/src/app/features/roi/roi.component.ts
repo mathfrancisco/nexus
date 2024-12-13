@@ -8,6 +8,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Subject } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Chart, ChartConfiguration, ChartOptions } from 'chart.js/auto';
+type Period = 'week' | 'month' | 'year';
 
 @Component({
   selector: 'app-roi',
@@ -23,6 +24,7 @@ export class RoiComponent implements OnInit, OnDestroy, AfterViewInit {
   private roiService = inject(RoiService);
   private destroyed$ = new Subject<void>();
   private destroyRef = inject(DestroyRef);
+  periods: Period[] = ['week', 'month', 'year'];
 
   roiData = signal<RoiData>({
     totalInvestment: 0,
@@ -99,8 +101,8 @@ export class RoiComponent implements OnInit, OnDestroy, AfterViewInit {
     if (!this.chart || !this.roiData().historicalData.length) return;
 
     const filteredData = this.filterDataByPeriod(this.roiData().historicalData);
-    
-    this.chart.data.labels = filteredData.map(item => 
+
+    this.chart.data.labels = filteredData.map(item =>
       new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
     );
     this.chart.data.datasets[0].data = filteredData.map(item => item.value);
