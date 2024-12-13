@@ -4,10 +4,24 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
-import { faLanguage, faFlag as faFlagSolid } from '@fortawesome/free-solid-svg-icons';
-import { faFlag } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
+
+interface NavItem {
+  label: string;
+  path: string;
+}
+
+interface SocialLink {
+  icon: string;
+  url: string;
+}
+
+interface FooterLink {
+  label: string;
+  path?: string;
+  url?: string;
+}
 
 @Component({
   selector: 'app-nav-bar',
@@ -18,38 +32,37 @@ import { CommonModule } from '@angular/common';
 })
 export class NavBarComponent {
   translate = inject(TranslateService);
-  faLanguage = faLanguage;
-  faUsFlag = faFlagSolid;
-  faFlag = faFlag;
 
-  selectedLanguage: string = 'en';
-  languages = [
-    {
-      name: 'English',
-      code: 'en',
-      flag: this.faUsFlag,
-      nativeName: 'English',
-      isDefault: true
-    },
-    {
-      name: 'Português',
-      code: 'pt',
-      flag: faFlagSolid,
-      nativeName: 'Portuguese',
-      isDefault: false
-    }
-  ];
 
   constructor() {
     this.translate.setDefaultLang('en');
-    this.translate.use(this.selectedLanguage);
   }
 
-  changeLanguage() {
-    this.translate.use(this.selectedLanguage);
-  }
 
-  getLanguageIcon(code: string) {
-    return this.languages.find(lang => lang.code === code)?.flag || this.faLanguage;
-  }
+  navItems: NavItem[] = [
+    { label: 'Home', path: '/' },
+    { label: 'Features', path: '/features' },
+    { label: 'Metrics', path: '/metrics' },
+    { label: 'ROI', path: '/roi' }
+  ];
+
+  socialLinks: SocialLink[] = [
+    { icon: 'fab fa-twitter', url: '#' },
+    { icon: 'fab fa-linkedin-in', url: '#' },
+    { icon: 'fab fa-github', url: '#' }
+  ];
+
+  quickLinks: FooterLink[] = [
+    { label: 'Features', path: '/features' },
+    { label: 'Metrics', path: '/metrics' },
+    { label: 'ROI Analysis', path: '/roi' },
+    { label: 'Blog', path: '/blog' }
+  ];
+
+  companyLinks: FooterLink[] = [
+    { label: 'About Us', url: '#' },
+    { label: 'Contact Us', url: '#' },
+    { label: 'Privacy Policy', url: '#' },
+    { label: 'Terms of Service', url: '#' }
+  ];
 }

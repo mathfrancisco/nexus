@@ -1,71 +1,106 @@
 <!-- Footer -->
-<footer class="bg-gradient-to-b from-gray-900 to-gray-950 text-gray-400 pt-20 pb-10">
-    <div class="container mx-auto px-4">
-        <!-- Main Footer Content -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-12">
-            <!-- Brand Section -->
-            <div class="lg:col-span-4">
-                <img src="assets/logo-white.svg" alt="Nexus AI Logo" class="h-10 mb-6">
-                <p class="text-gray-400 leading-relaxed mb-6">
-                    Advanced social media analytics powered by artificial intelligence. Unlock data-driven insights to elevate your social media game.
-                </p>
-                <!-- Social Media Icons -->
-                <div class="flex space-x-4">
-                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-500 transition-colors duration-300">
-                        <i class="fab fa-twitter text-white"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-500 transition-colors duration-300">
-                        <i class="fab fa-linkedin-in text-white"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-500 transition-colors duration-300">
-                        <i class="fab fa-github text-white"></i>
-                    </a>
-                </div>
-            </div>
+<footer class="relative bg-gray-900 text-gray-400 pt-24 pb-12 overflow-hidden">
+  <!-- Decorative Background -->
+  <div class="absolute inset-0 bg-[url('/assets/grid.svg')] opacity-5"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent"></div>
 
-            <!-- Quick Links -->
-            <div class="lg:col-span-2 lg:col-start-6">
-                <h4 class="text-lg font-semibold text-white mb-6">Quick Links</h4>
-                <ul class="space-y-3">
-                    <li><a routerLink="/features" class="hover:text-indigo-400 transition-colors duration-300">Features</a></li>
-                    <li><a routerLink="/metrics" class="hover:text-indigo-400 transition-colors duration-300">Metrics</a></li>
-                    <li><a routerLink="/roi" class="hover:text-indigo-400 transition-colors duration-300">ROI Analysis</a></li>
-                    <li><a href="#" class="hover:text-indigo-400 transition-colors duration-300">Blog</a></li>
-                </ul>
-            </div>
-
-            <!-- Company -->
-            <div class="lg:col-span-2">
-                <h4 class="text-lg font-semibold text-white mb-6">Company</h4>
-                <ul class="space-y-3">
-                    <li><a href="#" class="hover:text-indigo-400 transition-colors duration-300">About Us</a></li>
-                    <li><a href="#" class="hover:text-indigo-400 transition-colors duration-300">Contact Us</a></li>
-                    <li><a href="#" class="hover:text-indigo-400 transition-colors duration-300">Privacy Policy</a></li>
-                    <li><a href="#" class="hover:text-indigo-400 transition-colors duration-300">Terms of Service</a></li>
-                </ul>
-            </div>
-
-            <!-- Contact -->
-            <div class="lg:col-span-3">
-                <h4 class="text-lg font-semibold text-white mb-6">Get in Touch</h4>
-                <div class="space-y-4">
-                    <a href="mailto:info&#64;nexus-ai.com" class="flex items-center space-x-3 hover:text-indigo-400 transition-colors duration-300">
-                        <i class="far fa-envelope text-indigo-400"></i>
-                        <span>info&#64;nexus-ai.com</span>
-                    </a>
-                    <p class="flex items-center space-x-3">
-                        <i class="far fa-clock text-indigo-400"></i>
-                        <span>Mon - Fri: 9:00 - 17:00</span>
-                    </p>
-                </div>
-            </div>
+  <div class="container mx-auto px-4 relative">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+      <!-- Brand Section -->
+      <div class="lg:col-span-4">
+        <div class="flex items-center space-x-3 mb-8">
+          <img src="assets/logo-white.svg" alt="Nexus AI Logo" class="h-10">
+          <span class="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                        Nexus AI
+                    </span>
         </div>
-
-        <!-- Copyright -->
-        <div class="border-t border-gray-800 pt-8 mt-12 text-center">
-            <p class="text-sm text-gray-500">
-                &copy; {{ currentYear }} Nexus AI. All rights reserved.
-            </p>
+        <p class="text-gray-400 leading-relaxed mb-8 max-w-md">
+          Advanced social media analytics powered by artificial intelligence. Unlock data-driven insights to elevate your social media game.
+        </p>
+        <!-- Social Links -->
+        <div class="flex space-x-4">
+          <a *ngFor="let social of socialLinks"
+             [href]="social.url"
+             class="group relative">
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-300"></div>
+            <div class="relative w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center group-hover:bg-gray-700 transition-colors duration-300">
+              <i [class]="social.icon + ' text-white'"></i>
+            </div>
+          </a>
         </div>
+      </div>
+
+      <!-- Quick Links & Company -->
+      <div class="lg:col-span-2 lg:col-start-6">
+        <h4 class="text-lg font-semibold text-white mb-6">Quick Links</h4>
+        <ul class="space-y-3">
+          <li *ngFor="let link of quickLinks">
+            <a *ngIf="link.path" [routerLink]="link.path"
+               class="relative group text-gray-400 hover:text-white transition-colors duration-300">
+                            <span class="relative inline-block">
+                                {{ link.label }}
+                              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                            </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="lg:col-span-2">
+        <h4 class="text-lg font-semibold text-white mb-6">Company</h4>
+        <ul class="space-y-3">
+          <li *ngFor="let link of companyLinks">
+            <a [href]="link.url"
+               class="relative group text-gray-400 hover:text-white transition-colors duration-300">
+                            <span class="relative inline-block">
+                                {{ link.label }}
+                              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                            </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="lg:col-span-3">
+        <h4 class="text-lg font-semibold text-white mb-6">Get in Touch</h4>
+        <div class="space-y-4">
+          <a href="mailto:info@nexus-ai.com"
+             class="group flex items-center space-x-3 text-gray-400 hover:text-white transition-colors duration-300">
+            <div class="w-8 h-8 rounded-lg bg-gray-800 group-hover:bg-indigo-500/20 flex items-center justify-center transition-colors duration-300">
+              <i class="far fa-envelope text-indigo-400 group-hover:text-indigo-300"></i>
+            </div>
+            <span>info&#64;nexus-ai.com</span>
+          </a>
+          <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center">
+              <i class="far fa-clock text-indigo-400"></i>
+            </div>
+            <span>Mon - Fri: 9:00 - 17:00</span>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Newsletter -->
+    <div class="max-w-2xl mx-auto mb-16 text-center">
+      <h4 class="text-lg font-semibold text-white mb-4">Subscribe to Our Newsletter</h4>
+      <p class="text-gray-400 mb-6">Stay updated with the latest features and releases.</p>
+      <form class="flex space-x-2">
+        <input type="email"
+               placeholder="Enter your email"
+               class="flex-1 px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:border-indigo-500 transition-colors duration-300">
+        <button class="px-6 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg font-medium transition-colors duration-300">
+          Subscribe
+        </button>
+      </form>
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center">
+      <p class="text-sm text-gray-500">
+        &copy; {{ currentYear }} Nexus AI. All rights reserved.
+      </p>
+    </div>
+  </div>
 </footer>

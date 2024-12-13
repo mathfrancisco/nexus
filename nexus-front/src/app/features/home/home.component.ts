@@ -2,15 +2,24 @@
 import { Component, signal } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {faChartLine, faBrain, faChartPie, faArrowDown, faArrowUp} from '@fortawesome/free-solid-svg-icons';
+import {
+  faChartLine,
+  faBrain,
+  faChartPie,
+  faArrowDown,
+  faArrowUp,
+  faRocket,
+  faCheck, faUsers
+} from '@fortawesome/free-solid-svg-icons';
 import { faYoutube, faInstagram, faTiktok, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import {TranslatePipe} from '@ngx-translate/core';
 
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule,FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, TranslatePipe],
   templateUrl: './home.component.html'
 })
 export class HomeComponent {
@@ -83,6 +92,81 @@ export class HomeComponent {
       ]
     }
   ]);
+
+
+  coreValues = signal([
+    {
+      title: 'Innovation',
+      description: 'Always seeking new solutions and technologies to improve your results.',
+      icon: faRocket
+    },
+    {
+      title: 'Artificial Intelligence',
+      description: 'Using advanced algorithms to generate accurate and actionable insights.',
+      icon: faBrain
+    },
+    {
+      title: 'Data Analysis',
+      description: 'Transforming data into valuable information to optimize your strategies.',
+      icon: faChartLine
+    }
+  ]);
+
+  testimonials = signal([
+    {
+      image: 'https://i.pravatar.cc/150?img=1',
+      name: 'Maria Silva',
+      title: 'CEO, Company X',
+      quote: 'Nexus AI completely transformed our social media strategy. I highly recommend it!'
+    },
+    {
+      image: 'https://i.pravatar.cc/150?img=2',
+      name: 'John Smith', // Alterado
+      title: 'Marketing Manager, Company Y',
+      quote: 'The platform is intuitive and easy to use. The insights generated are incredible!'
+    },
+    {
+      image: 'https://i.pravatar.cc/150?img=3',
+      name: 'Ana Johnson', // Alterado
+      title: 'Social Media Analyst, Company Z',
+      quote: 'With Nexus AI, we were able to increase our engagement by more than 30%.'
+    }
+  ]);
+
+  isHovered = [false, false, false];
+  pricingPlans = signal([
+    {
+      name: 'Basic Plan',
+      price: '$29/month',
+      features: [
+        'Access to 3 platforms',
+        'Basic data analysis',
+        'Weekly reports'
+      ]
+    },
+    {
+      name: 'Premium Plan',
+      price: '$49/month',
+      features: [
+        'Access to all platforms',
+        'Advanced data analysis',
+        'Daily reports',
+        'Dedicated support'
+      ]
+    },
+    {
+      name: 'Enterprise Plan',
+      price: '$149/month',
+      features: [
+        'Unlimited access to all platforms',
+        'Predictive analysis',
+        'Custom reports',
+        '24/7 premium support'
+      ]
+    }
+  ]);
+
+
   getPlatformIcon(platform: string) {
     switch (platform) {
       case 'YouTube':
@@ -99,5 +183,6 @@ export class HomeComponent {
   }
   protected readonly faArrowDown = faArrowDown;
   protected readonly faArrowUp = faArrowUp;
+  protected readonly faCheck = faCheck;
 }
 
