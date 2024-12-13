@@ -1,7 +1,7 @@
 <!-- Navbar -->
 <nav class="bg-gray-900/95 backdrop-blur-md fixed w-full z-50 border-b border-gray-800">
-    <div class="container mx-auto px-4">
-        <div class="flex items-center justify-between h-20">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between h-20">
             <!-- Logo -->
             <div class="flex items-center">
                 <a routerLink="/" class="flex items-center space-x-3 group">
@@ -45,6 +45,24 @@
                     </button>
                 </div>
             </div>
+         <!-- Language Dropdown -->
+      <div class="ml-auto">
+        <p-dropdown [options]="languages" [(ngModel)]="selectedLanguage" optionLabel="name"
+                    (onChange)="changeLanguage()" [style]="{'width':'120px'}" appendTo="body">
+          <ng-template pTemplate="selectedItem">
+            <div *ngIf="selectedLanguage" class="flex align-items-center gap-2">
+              <fa-icon [icon]="faLanguage"></fa-icon>
+              <span>{{selectedLanguage === 'en' ? 'English' : 'Português'}}</span>
+            </div>
+          </ng-template>
+          <ng-template let-lang pTemplate="item">
+            <div class="flex align-items-center gap-2">
+              <fa-icon [icon]="faLanguage"></fa-icon>
+              <span>{{lang.name}}</span>
+            </div>
+          </ng-template>
+        </p-dropdown>
+      </div>
 
             <!-- Mobile Menu Button -->
             <div class="md:hidden">

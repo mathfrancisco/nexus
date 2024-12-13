@@ -4,6 +4,7 @@ import { HomeComponent } from './features/home/home.component'; // Importe os co
 import { MetricsComponent } from './features/metrics/metrics.component';
 import { RoiComponent } from './features/roi/roi.component';
 import { FeaturesComponent } from './features/features/features.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 export const routes: Routes = [
   {
@@ -39,7 +40,8 @@ import {ApplicationConfig} from '@angular/core'; // Importe as rotas
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes), // Use as rotas importadas
+    provideRouter(routes),
+    // Use as rotas importadas
     // ... outros providers
   ]
 };
