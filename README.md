@@ -1,28 +1,29 @@
 # Nexus AI - Plataforma de Análise de Métricas de Redes Sociais
 
-Nexus AI é uma plataforma que fornece análises abrangentes de métricas de redes sociais, permitindo que os usuários monitorem seu desempenho, acompanhem as tendências e comparem seus resultados com os concorrentes.
+Nexus AI é uma plataforma abrangente que capacita usuários a analisar o desempenho em redes sociais, monitorar tendências e comparar resultados com a concorrência. Com visualizações interativas e insights acionáveis, o Nexus AI ajuda a otimizar estratégias de marketing e maximizar o retorno do investimento.
 
 ## 🚀 Funcionalidades Principais
 
-- **Métricas de Desempenho:** Visualize seguidores, taxa de engajamento, interações e outras métricas relevantes para cada plataforma.
-- **Visualização de Dados:** Gráficos e tabelas interativos para uma análise clara e intuitiva dos dados.
-- **Retorno sobre Investimento (ROI):** Calcule e acompanhe o ROI de suas campanhas de marketing em redes sociais.
-- **Recursos da Plataforma:** Descrição detalhada dos recursos e benefícios da plataforma Nexus AI.
-- **Carregamento Assíncrono:**  Carregamento eficiente de dados com indicadores de progresso para uma melhor experiência do usuário.
+- **Métricas de Desempenho:** Acompanhe métricas essenciais como seguidores, taxa de engajamento, interações e muito mais, segmentadas por plataforma.
+- **Visualização de Dados:** Explore dados por meio de gráficos e tabelas interativos, permitindo uma análise clara e eficiente.
+- **Análise de ROI:** Calcule e monitore o retorno sobre o investimento (ROI) de suas campanhas de marketing em redes sociais.
+- **Visão Geral da Plataforma:** Explore os recursos e benefícios do Nexus AI em uma página dedicada.
+- **Experiência Aprimorada:** Carregamento assíncrono de dados com indicadores de progresso para uma experiência de usuário otimizada.
+- **Design Moderno e Intuitivo:** Interface elegante e fácil de usar, com foco na usabilidade e acessibilidade.
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Frontend:** Angular 18, TypeScript, RxJS, Tailwind CSS, Bootstrap 5, Chart.js, `@ng-bootstrap/ng-bootstrap`,  `@auth0/angular-jwt`.
+- **Frontend:** Angular 18, TypeScript, RxJS, Tailwind CSS, Chart.js, Font Awesome.
 - **Backend:** Java 17, Spring Boot, Spring MVC, Spring Data JPA.
-- **Banco de dados:** PostgreSQL, SQLite (para desenvolvimento).
-- **Cache:** Caffeine (a ser implementado).
-- **Outras:** Lombok, Swagger.
+- **Banco de Dados:** PostgreSQL, SQLite (para desenvolvimento).
+- **Cache:** Caffeine (planejado).
+- **Outras:** Lombok, Swagger, Docker Compose.
 
 ## 💻 Instalação e Execução
 
 ### Backend (com Docker Compose)
 
-1. **Clone o repositório:** `git clone [URL do repositório]`
+1. **Clone o repositório:** `git clone https://github.com/seu-usuario/nexus-analytics.git`
 2. **Navegue até o diretório raiz:** `cd nexus-analytics`
 3. **Inicie os serviços:** `docker-compose up -d`
 
@@ -38,63 +39,58 @@ A aplicação frontend estará disponível em `http://localhost:4200/`.
 
 ## 📂 Estrutura do Projeto
 
-A estrutura do projeto reflete a arquitetura escolhida, com separação clara entre frontend e backend.
+O projeto segue uma arquitetura modular, com frontend e backend claramente separados.
 
 **Frontend (`/frontend`):**
 
-- `src/app/core`: Contém os serviços, modelos e interceptadores principais da aplicação.
-- `src/app/shared`: Componentes e pipes reutilizáveis em toda a aplicação.
-- `src/app/features`: Componentes específicos para cada funcionalidade da plataforma (métricas, ROI, etc.).
+- `src/app/core`: Serviços, modelos e lógica de negócios.
+- `src/app/shared`: Componentes, pipes e diretivas reutilizáveis.
+- `src/app/features`: Componentes de interface de usuário para cada funcionalidade (métricas, ROI, etc.).
 
 **Backend (`/backend`):**
 
-- `src/main/java/com/nexus/analytics`: Contém o código fonte Java, incluindo controllers, services, models e configurações.
-- `src/main/resources`: Arquivos de configuração, como `application.properties`.
+- `src/main/java/com/nexus/analytics`: Código-fonte Java (controllers, services, models, etc.).
+- `src/main/resources`: Arquivos de configuração.
 
 ## 🧩 Módulos e Componentes Principais (Frontend)
 
-- **`MetricsComponent`:** Exibe as métricas de desempenho das plataformas.
-- **`RoiComponent`:** Calcula e exibe o ROI das campanhas.
-- **`FeaturesComponent`:** Descreve os recursos da plataforma.
-- **`LoadingSpinnerComponent`:** Componente reutilizável para exibir indicadores de carregamento.
-- **`MetricFormatterPipe`:** Pipe para formatar valores numéricos (moeda, porcentagem, etc.).
-- **`HttpErrorInterceptor`:** Intercepta erros HTTP para tratamento centralizado.
+- **`MetricsComponent`:** Dashboard de métricas de desempenho.
+- **`RoiComponent`:** Análise de ROI.
+- **`FeaturesComponent`:** Descrição dos recursos da plataforma.
+- **`LoadingSpinnerComponent`:** Componente de carregamento.
+- **`MetricFormatterPipe`:** Formatação de valores numéricos.
 
-## 📚 Documentação da API (Backend)
+## 🎨 Design e Usabilidade
 
-A API backend utiliza Spring Boot e oferece os seguintes endpoints:
-
-- **`GET /api/v1/metrics/{platform}`:** Retorna as métricas de desempenho para a plataforma especificada.
-- **`GET /api/v1/roi/analysis`:** Retorna a análise de ROI.
-- **`GET /api/v1/features`:** Retorna a lista de recursos da plataforma.
+O Nexus AI foi projetado com foco na usabilidade e na experiência do usuário.  A interface moderna e intuitiva utiliza os princípios de design responsivo para garantir uma ótima experiência em diferentes dispositivos.
 
 ## 🧪 Testes
 
-- **Frontend:** Execute `ng test` para executar os testes unitários.
-- **Backend:**  Execute os testes unitários e de integração com `mvn test`.
+- **Frontend:** `ng test` para executar os testes unitários.
+- **Backend:** `mvn test` para executar os testes.
 
 ## 🤔 Decisões de Design e Arquitetura
 
-- **Frontend (Angular):** Arquitetura baseada em módulos e componentes para melhor organização e reutilização de código.  Utilização de RxJS para gerenciar eventos assíncronos e `signals` para reatividade.
-- **Backend (Spring Boot):**  Arquitetura em camadas (controllers, services, repositories) para separação de responsabilidades.  Utilização de Spring Data JPA para acesso a dados.
+- **Frontend (Angular):** Arquitetura baseada em componentes, com ênfase na reutilização de código e na modularidade.  Utilização de RxJS para gerenciamento de eventos assíncronos e Signals para reatividade.
+- **Backend (Spring Boot):** Arquitetura em camadas (controllers, services, repositories) para separação de responsabilidades e manutenibilidade.
 
 ## 🔜 Próximos Passos
 
 - Implementar autenticação de usuário.
-- Implementar persistência de dados no backend.
-- Adicionar mais métricas e recursos de análise.
+- Aprimorar a persistência de dados no backend.
+- Expandir as métricas e análises disponíveis.
 - Implementar testes end-to-end.
-- Melhorar a documentação da API.
+- Refinar a documentação da API.
 - Otimizar o desempenho do frontend e backend.
 
-## Contribuindo
+## ✨ Contribuindo
 
-Contribuições são bem-vindas! Por favor, abra uma _issue_ para discutir a mudança ou envie um _pull request_.
+Contribuições são bem-vindas!  Abra uma _issue_ para discutir melhorias ou envie um _pull request_.
 
-## Licença
+## 📄 Licença
 
 MIT
 
-## Contato
+## ✉️ Contato
 
-[Seu nome] - [Seu email]
+[Seu Nome] - [Seu Email]
