@@ -2,7 +2,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
@@ -25,7 +24,7 @@ interface FooterLink {
 
 @Component({
   selector: 'app-nav-bar',
-  imports: [RouterLinkActive, RouterLink, DropdownModule, FormsModule, FontAwesomeModule, CommonModule, NgOptimizedImage],
+  imports: [RouterLinkActive, RouterLink, FormsModule, FontAwesomeModule, CommonModule, NgOptimizedImage],
   templateUrl: './nav-bar.component.html',
   standalone: true,
   styleUrl: './nav-bar.component.css'
