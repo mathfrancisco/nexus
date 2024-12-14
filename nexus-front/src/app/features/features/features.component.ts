@@ -4,9 +4,10 @@ import { Feature } from '../../core/models/feature.model';
 import {CommonModule} from '@angular/common';
 
 @Component({
-    selector: 'app-features',
-    imports: [CommonModule],
-    templateUrl: './features.component.html'
+  selector: 'app-features',
+  imports: [CommonModule],
+  standalone: true,
+  templateUrl: './features.component.html'
 })
 export class FeaturesComponent implements OnInit {
   private featureService = inject(FeatureService);

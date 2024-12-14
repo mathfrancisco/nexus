@@ -17,9 +17,10 @@ import {TranslatePipe} from '@ngx-translate/core';
 
 
 @Component({
-    selector: 'app-home',
-    imports: [CommonModule, FontAwesomeModule, TranslatePipe],
-    templateUrl: './home.component.html'
+  selector: 'app-home',
+  imports: [CommonModule, FontAwesomeModule, TranslatePipe],
+  standalone: true,
+  templateUrl: './home.component.html'
 })
 export class HomeComponent {
   faYoutube = faYoutube;
