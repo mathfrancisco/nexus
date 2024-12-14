@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/features")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200,https://nexus-ia.netlify.app/")
 @RequiredArgsConstructor
 @Slf4j
 public class FeatureController {

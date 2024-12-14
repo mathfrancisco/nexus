@@ -13,7 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/analytics")
-@CrossOrigin(origins = "http://localhost:4200") // Configure CORS como necessário
+@CrossOrigin(origins = "http://localhost:4200,https://nexus-ia.netlify.app/") // Configure CORS como necessário
 @RequiredArgsConstructor
 @Slf4j
 public class AnalyticsController {
