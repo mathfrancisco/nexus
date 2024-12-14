@@ -18,4 +18,4 @@ USER 1001
 # O perfil agora precisa ser definido diretamente no comando
 CMD ["java", "-jar", "-Dspring.profiles.active=dev", "app.jar"]
 
-HEALTHCHECK --interval=30s --timeout=10s CMD curl -f http://localhost:8080/actuator/health || exit 1
+
