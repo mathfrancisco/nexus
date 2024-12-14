@@ -1,27 +1,21 @@
-FROM openjdk:17-jdk-slim
-
-WORKDIR /app
-
-COPY nexus/.mvn .mvn/
-COPY nexus/mvnw .
-COPY nexus/mvnw.cmd .
+# Stage 1: Builder
+FROM maven:3.8.7-openjdk-18-slim AS build
+WORKDIR /build
 COPY nexus/pom.xml .
-
-# Baixa as dependências (para evitar baixar a cada build)
-RUN ./mvnw dependency:go-offline
-
+RUN mvn dependency:go-offline
 COPY nexus/src ./src
+RUN mvn clean package -DskipTests
 
-# Empacota a aplicação
-RUN ./mvnw package -DskipTests
-
-# Copia o JAR para o diretório de trabalho
-COPY nexus/target/nexus-0.0.1-SNAPSHOT.jar app.jar
+# Stage 2: Runtime
+FROM amazoncorretto:17
+WORKDIR /app
+COPY --from=build /build/target/nexus-0.0.1-SNAPSHOT.jar ./app.jar
 
 EXPOSE 8080
 
 USER 1001
 
-CMD ["java", "-jar", "app.jar"]
+# O perfil agora precisa ser definido diretamente no comando
+CMD ["java", "-jar", "-Dspring.profiles.active=dev", "app.jar"]
 
 HEALTHCHECK --interval=30s --timeout=10s CMD curl -f http://localhost:8080/actuator/health || exit 1
