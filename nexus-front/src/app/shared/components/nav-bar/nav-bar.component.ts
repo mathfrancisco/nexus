@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 
 interface NavItem {
   label: string;
@@ -26,7 +26,7 @@ interface FooterLink {
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [RouterLinkActive, RouterLink, DropdownModule, FormsModule, FontAwesomeModule, CommonModule],
+  imports: [RouterLinkActive, RouterLink, DropdownModule, FormsModule, FontAwesomeModule, CommonModule, NgOptimizedImage],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'
 })
