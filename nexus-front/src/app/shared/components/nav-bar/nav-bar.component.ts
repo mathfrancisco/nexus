@@ -24,11 +24,10 @@ interface FooterLink {
 }
 
 @Component({
-  selector: 'app-nav-bar',
-  standalone: true,
-  imports: [RouterLinkActive, RouterLink, DropdownModule, FormsModule, FontAwesomeModule, CommonModule, NgOptimizedImage],
-  templateUrl: './nav-bar.component.html',
-  styleUrl: './nav-bar.component.css'
+    selector: 'app-nav-bar',
+    imports: [RouterLinkActive, RouterLink, DropdownModule, FormsModule, FontAwesomeModule, CommonModule, NgOptimizedImage],
+    templateUrl: './nav-bar.component.html',
+    styleUrl: './nav-bar.component.css'
 })
 export class NavBarComponent {
   translate = inject(TranslateService);

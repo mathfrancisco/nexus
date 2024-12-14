@@ -18,16 +18,15 @@ interface FooterLink {
   url?: string;
 }
 @Component({
-  selector: 'app-footer',
-  standalone: true,
-  imports: [
-    RouterLink,
-    NgForOf,
-    NgIf,
-    NgOptimizedImage
-  ],
-  templateUrl: './footer.component.html',
-  styleUrl: './footer.component.css'
+    selector: 'app-footer',
+    imports: [
+        RouterLink,
+        NgForOf,
+        NgIf,
+        NgOptimizedImage
+    ],
+    templateUrl: './footer.component.html',
+    styleUrl: './footer.component.css'
 })
 
 

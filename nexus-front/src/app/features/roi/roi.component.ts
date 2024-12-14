@@ -11,14 +11,13 @@ import { Chart, ChartConfiguration, ChartOptions } from 'chart.js/auto';
 type Period = 'week' | 'month' | 'year';
 
 @Component({
-  selector: 'app-roi',
-  standalone: true,
-  imports: [
-    LoadingSpinnerComponent,
-    MetricFormatterPipe,
-    CommonModule
-  ],
-  templateUrl: './roi.component.html'
+    selector: 'app-roi',
+    imports: [
+        LoadingSpinnerComponent,
+        MetricFormatterPipe,
+        CommonModule
+    ],
+    templateUrl: './roi.component.html'
 })
 export class RoiComponent implements OnInit, OnDestroy, AfterViewInit {
   private roiService = inject(RoiService);

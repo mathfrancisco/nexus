@@ -11,15 +11,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-metrics',
-  standalone: true,
-  imports: [
-    LoadingSpinnerComponent,
-    MetricFormatterPipe,
-    CommonModule,
-    FormsModule
-  ],
-  templateUrl: './metrics.component.html'
+    selector: 'app-metrics',
+    imports: [
+        LoadingSpinnerComponent,
+        MetricFormatterPipe,
+        CommonModule,
+        FormsModule
+    ],
+    templateUrl: './metrics.component.html'
 })
 export class MetricsComponent implements OnInit, AfterViewInit, OnDestroy {
   private analyticsService = inject(AnalyticsService);
