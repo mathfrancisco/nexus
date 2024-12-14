@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 import { RouterLink} from '@angular/router';
 import {NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
@@ -33,6 +33,8 @@ interface FooterLink {
 
 export class FooterComponent {
   currentYear = new Date().getFullYear();
+
+
   navItems: NavItem[] = [
     { label: 'Home', path: '/' },
     { label: 'Features', path: '/features' },
@@ -59,5 +61,6 @@ export class FooterComponent {
     { label: 'Privacy Policy', url: '#' },
     { label: 'Terms of Service', url: '#' }
   ];
+
 
 }

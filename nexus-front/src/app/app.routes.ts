@@ -1,30 +1,24 @@
-// app.routes.ts
-import {provideRouter, Routes} from '@angular/router';
-import { HomeComponent } from './features/home/home.component'; // Importe os componentes
-import { MetricsComponent } from './features/metrics/metrics.component';
-import { RoiComponent } from './features/roi/roi.component';
-import { FeaturesComponent } from './features/features/features.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { provideRouter, Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    loadComponent: () => import('./features/home/home.component').then(c => c.HomeComponent),
     title: 'NEXUS AI - Home'
   },
   {
     path: 'metrics',
-    component: MetricsComponent,
+    loadComponent: () => import('./features/metrics/metrics.component').then(c => c.MetricsComponent),
     title: 'NEXUS AI - Analytics Metrics'
   },
   {
     path: 'roi',
-    component: RoiComponent,
+    loadComponent: () => import('./features/roi/roi.component').then(c => c.RoiComponent),
     title: 'NEXUS AI - ROI Analysis'
   },
   {
     path: 'features',
-    component: FeaturesComponent,
+    loadComponent: () => import('./features/features/features.component').then(c => c.FeaturesComponent),
     title: 'NEXUS AI - Features'
   },
   {
@@ -34,14 +28,9 @@ export const routes: Routes = [
   }
 ];
 
-
-
-import {ApplicationConfig} from '@angular/core'; // Importe as rotas
+import { ApplicationConfig } from '@angular/core';
 
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideRouter(routes),
-    // Use as rotas importadas
-    // ... outros providers
-  ]
+  providers: [provideRouter(routes)]
 };
+

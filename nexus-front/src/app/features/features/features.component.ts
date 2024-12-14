@@ -1,4 +1,3 @@
-// features/features/features.component.ts
 import { Component, OnInit, signal, inject } from '@angular/core';
 import { FeatureService } from '../../core/services/feature.service';
 import { Feature } from '../../core/models/feature.model';
