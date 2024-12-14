@@ -10,10 +10,10 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        // Redireciona qualquer caminho que não comece com /api para o index.html
-        registry.addViewController("/{x:^(?!api).*$}/**")
+        registry.addViewController("/{x:^(?!api\\/v1).*$}.**") // ou  ("/{x:^(?!api).*$}/**") se sua api não tiver /v1
                 .setViewName("forward:/index.html");
     }
 }
+
 
 

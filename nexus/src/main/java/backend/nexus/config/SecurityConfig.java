@@ -31,9 +31,9 @@ public class SecurityConfig {
         http
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/api/v1/**").permitAll() // Permite acesso à API
-                        .requestMatchers("/", "/index.html", "/**/*.js", "/**/*.css", "/**/*.ico", "/**/*.png", "/**/*.jpg", "/**/*.gif").permitAll() // Permite acesso aos arquivos estáticos
-                        .anyRequest().authenticated() // Requer autenticação para outras requisições (se necessário)
+                        .requestMatchers("/api/v1/**").permitAll()
+                        .requestMatchers("/", "/index.html", "/**/*.js", "/**/*.css", "/**/*.ico", "/**/*.png", "/**/*.jpg", "/**/*.gif", "/**/*.*").permitAll() // Permitindo todos os tipos de arquivo estático
+                        .anyRequest().authenticated() // Remova se não precisar de autenticação
                 )
                 .csrf(csrf -> csrf.disable());
 
